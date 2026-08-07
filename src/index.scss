@@ -1,0 +1,7 @@
+@use './shared/styles/themes.scss';
+@use './shared/styles/button.scss';
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
