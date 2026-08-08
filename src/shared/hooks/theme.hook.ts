@@ -2,7 +2,7 @@ import type { ThemeMode } from "../types/theme.types";
 import { useLocalStorageGet, useLocalStorageSet } from "./localStorage.hook";
 
 export function useTheme(theme: ThemeMode, save:boolean = true): void {
-    document.documentElement.dataset.theme = theme;
+    // document.documentElement.dataset.theme = theme;
     if (save) useLocalStorageSet("theme", theme);
 }
 
