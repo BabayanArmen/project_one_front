@@ -1,22 +1,11 @@
-import { useState } from "react";
-import { useGetCurrentTheme, useTheme } from "../hooks/theme.hook";
+import Button from '@mui/material/Button';
+import { useTheme } from "../hooks/theme.hook";
 
 export function ThemeToggle() {
-    const [theme, setTheme] = useState(useGetCurrentTheme());
-
-    const onSetTheme = () => {
-        if (theme == "dark") {
-            useTheme("light");
-            setTheme("light")
-        } else {
-            useTheme("dark");
-            setTheme("dark");
-        }
-    }
-    
+    const { stateTheme, switchTheme } = useTheme();    
     return (
-        <>
-            <button onClick={onSetTheme}>{theme}</button>
-        </>
+        <Button variant="contained" size="small" onClick={switchTheme}>
+            {stateTheme}
+        </Button>
     )
 }

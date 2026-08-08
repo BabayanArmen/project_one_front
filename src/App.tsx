@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
 import './App.scss'
-// import { ThemeToggle } from './shared/components/ThemeToggle';
-// import { useDefaultTheme } from './shared/hooks/theme.hook';
 import { ThemeProvider } from '@mui/material/styles';
-import { darkTheme, lightTheme } from './shared/styles/theme';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import { useFetchData } from './shared/hooks/useItem.hook';
+// import { useFetchData } from './shared/hooks/useFetchData.hook';
+import { ThemeToggle } from './shared/components/ThemeToggle';
+import { useTheme } from './shared/hooks/theme.hook';
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '@mui/material/Button';
+import { loadMe } from './features/userSlice';
+import type { AppDispatch, RootState } from './app/store';
 
 function App() {
-  // useDefaultTheme();
-  const [theme, setTheme] = useState(lightTheme);
+  const { theme } = useTheme();
 
-  const { data, load, loading, error } = useFetchData("https://jsonplaceholder.typicode.com/posts");
-  console.log(data);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const user = useSelector((state: RootState) => {
+    console.log(state.currentUser.user);
+    return state.currentUser.user;
+  })
+  
+  // const { data, load, loading, error } = useFetchData("https://jsonplaceholder.typicode.com/posts");
   
   return (
     <ThemeProvider theme={theme}>
@@ -22,20 +27,16 @@ function App() {
 
       <div style={{padding: '20px'}}>
         <h1>Project One</h1>
-        {/* <ThemeToggle /> */}
-        <Button variant="contained" size="small" onClick={() => {theme == lightTheme ? setTheme(darkTheme) : setTheme(lightTheme)}}>
-         Theme
-        </Button>
+        <ThemeToggle />
 
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-        <Button variant="contained" size="small" onClick={() => load()}>Get Posts</Button>
+        <Button variant="contained" size="small" onClick={() => dispatch(loadMe())}>Get Me</Button>
+        <span>{user?.name}</span>
         
       </div>
 
-      {loading && <div>Loading...</div>}
+      {/* {loading && <div>Loading...</div>}
 
-      {error && <span>Error</span>}
+      {error && <span>Error</span>} */}
 
     </ThemeProvider>
   )
