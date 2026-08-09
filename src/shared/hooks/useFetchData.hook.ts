@@ -9,7 +9,7 @@ export function useFetchData(url: string, params: any = null) {
     const load = async () => {
         try {
             setLoading(true);
-            setError(null);
+            setError(null);       
             const result: any = await get(url, {params});
             setdata(result);
         } catch (error) {

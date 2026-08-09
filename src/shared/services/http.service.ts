@@ -1,7 +1,10 @@
 import axios, { type AxiosRequestConfig } from "axios";
 
 const api = axios.create({
-    baseURL: ""
+    baseURL: "",
+    headers: {
+        "Cache-Control": "no-cache"
+    }
 })
 
 api.interceptors.request.use(
@@ -57,8 +60,8 @@ api.interceptors.response.use(
     }
 )
 
-export async function get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    const response = await api.get<T>(url, config);
+export async function get<T>(url: string, params?: any): Promise<T> {
+    const response = await api.get<T>(url, {params});
     return response.data;
 }
 
