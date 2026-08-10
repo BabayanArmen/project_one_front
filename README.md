@@ -82,3 +82,4 @@ export default defineConfig([
 ## npm install @hookform/resolvers
 ## npm install zod
 ## npm i @tanstack/react-query
+## npm i zustand
