@@ -1,7 +1,11 @@
 // import { decrement, increment, reset } from "../../zustand-store/useCounterStore";
+import Button from '@mui/material/Button';
 import loginStyles from "../../shared/styles/pages/login.module.scss"; 
+import { useState } from 'react';
+import TextField from '@mui/material/TextField';
 
 export function Login() {
+    const [showLogin, setShowLogin] = useState<boolean>(false);
     
     return (
         // <>
@@ -13,9 +17,22 @@ export function Login() {
 
         <div className={loginStyles.login_page_wrapper}>
             <div className={loginStyles.login_content}>
-                <div className={loginStyles.login_title}>Project ONE</div>
+                <div className={loginStyles.login_title}>
+                    Project ONE
+                    {!showLogin && <Button variant="contained" size="small" onClick={() => setShowLogin(true)}>Enter</Button>}
+                </div>
             </div>
-            <div className={loginStyles.login_form}>login form</div>
+            {
+                showLogin && 
+                (
+                    <div className={loginStyles.login_form}>
+                        <TextField size='small' sx={{ width: '90%'}} id="outlined-basic" label="Login" variant="outlined" />
+                        <TextField size='small' sx={{ width: '90%'}} id="outlined-password-input" label="Password" type="password" autoComplete="current-password" />
+                        <Button variant="contained" sx={{ width: '90%'}}>Login</Button>
+                        <span className={loginStyles.register}>register</span>
+                    </div>
+                ) 
+            }
         </div>
     )
 }
