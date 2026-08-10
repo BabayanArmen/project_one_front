@@ -1,19 +1,21 @@
-import { useCounterStore } from "../../zustand-store/useCounterStore";
+// import { decrement, increment, reset } from "../../zustand-store/useCounterStore";
+import loginStyles from "../../shared/styles/pages/login.module.scss"; 
 
 export function Login() {
-    const { increment, decrement, reset } = useCounterStore(state => state.actions);
-
+    
     return (
-        <>
-            <button onClick={inc}>Inc from outsiede</button>
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
-            <button onClick={reset}>reset</button>
-            <span>Login</span>
-        </>
-    )
-}
+        // <>
+        //     <button onClick={increment}>+</button>
+        //     <button onClick={decrement}>-</button>
+        //     <button onClick={reset}>reset</button>
+        //     <span>Login</span>
+        // </>
 
-function inc() {
-    useCounterStore.setState(state => ({count: state.count + 1}));
+        <div className={loginStyles.login_page_wrapper}>
+            <div className={loginStyles.login_content}>
+                <div className={loginStyles.login_title}>Project ONE</div>
+            </div>
+            <div className={loginStyles.login_form}>login form</div>
+        </div>
+    )
 }

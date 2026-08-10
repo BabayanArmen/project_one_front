@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { useCounterStore } from "../zustand-store/useCounterStore";
+// import { useCounterStore } from "../zustand-store/useCounterStore";
 
 export function AuthLayout() {
-    const count = useCounterStore(state => state.count);
+    // const count = useCounterStore(state => state.count);
 
     return (
         <>
-            <span>Count: {count}</span>
+            {/* <span>Count: {count}</span> */}
             <Outlet/>
         </>
     )
