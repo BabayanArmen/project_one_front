@@ -12,9 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Person2Icon from '@mui/icons-material/Person2';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import LogoutDialog from './LogoutDialog';
 import { useState } from 'react';
+import styles from "../styles/components/main-drawer-menu.module.scss";
 
 export default function MainDrawerMenu() {
   const [open, setOpen] = React.useState(false);
@@ -23,27 +24,29 @@ export default function MainDrawerMenu() {
     setOpen(newOpen);
   };
 
-  const navigate = useNavigate();
-
   const [openLogoutDialog, setOpenLogoutDialog] = useState<boolean>(false);
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         <ListItem disablePadding>
-            <ListItemButton onClick={() => navigate("/home")}>
-              <ListItemIcon>
-                    <HomeIcon/>
-              </ListItemIcon>
-              <ListItemText primary='Home' />
+            <ListItemButton>
+              <NavLink to="/home" className={({isActive}) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}>
+                <ListItemIcon>
+                      <HomeIcon/>
+                </ListItemIcon>
+                <ListItemText primary='Home' />
+              </NavLink>
             </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-            <ListItemButton onClick={() => navigate("/profile")}>
-              <ListItemIcon>
-                    <Person2Icon/>
-              </ListItemIcon>
-              <ListItemText primary='Profile' />
+            <ListItemButton>
+              <NavLink to="/profile" className={({isActive}) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}>
+                <ListItemIcon>
+                      <Person2Icon/>
+                </ListItemIcon>
+                <ListItemText primary='Profile' />
+              </NavLink>
             </ListItemButton>
         </ListItem>
       </List>

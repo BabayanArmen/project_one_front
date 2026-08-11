@@ -1,0 +1,11 @@
+.navLink {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: gray;
+
+  &.active {
+    color: #075a8a;
+  }
+}
