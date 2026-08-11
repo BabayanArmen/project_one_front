@@ -71,7 +71,7 @@ export function Login() {
                     error={!!errors.password}
                     helperText={errors.password?.message}
                 />
-                <Button type='submit' variant="outlined" sx={{ width: '90%'}} disabled={isSubmitting}>
+                <Button type='submit' variant="outlined" sx={{ width: '90%', color: '#bbcbd4', borderColor: '#507890'}} disabled={isSubmitting}>
                     {isSubmitting ? 'Loading' : 'Enter'}
                 </Button>
                 <div className={styles.register_container}>

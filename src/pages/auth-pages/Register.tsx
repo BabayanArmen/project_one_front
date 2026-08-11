@@ -67,7 +67,7 @@ export function Register() {
                 {watch('isOrganization') && (
                     <TextField {...register("organizationName")} error={!!errors.organizationName} helperText={errors.organizationName?.message} id="outlined-basic" label="Organization Name" variant="outlined" size="small" sx={{width: '90%'}}/>
                 )}
-                <Button type="submit" variant="outlined" sx={{width: '90%'}} disabled={isSubmitting}>
+                <Button type="submit" variant="outlined" sx={{width: '90%', color: '#bbcbd4', borderColor: '#507890'}} disabled={isSubmitting}>
                     {isSubmitting ? "Loading" : "Enter"}
                 </Button>
             </form>

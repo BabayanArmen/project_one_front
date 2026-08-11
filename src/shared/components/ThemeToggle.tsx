@@ -1,11 +1,13 @@
-import Button from '@mui/material/Button';
 import { useTheme } from "../hooks/theme.hook";
+import { IconButton } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export function ThemeToggle() {
     const { stateTheme, switchTheme } = useTheme();    
     return (
-        <Button variant="contained" size="small" onClick={switchTheme}>
-            {stateTheme}
-        </Button>
+        <IconButton color="inherit" onClick={switchTheme}>
+            {stateTheme == 'light' ? <LightModeIcon /> : <DarkModeIcon />}
+        </IconButton>
     )
 }
