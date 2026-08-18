@@ -27,12 +27,7 @@ function App() {
   // useEffect(() => {
   //   console.log(user);
   // }, [user])
-  
-  // const tableData: TableData = {
-  //   url: "https://jsonplaceholder.typicode.com/posts?", // _start=0&_limit=5
-  //   headers: ['id', 'userId', 'title', 'body']
-  // }
-  
+    
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
@@ -45,9 +40,7 @@ function App() {
           <ThemeToggle />
           <Button variant="contained" size="small" onClick={() => dispatch(loadMe())}>Get Me</Button>
           <span>{user?.name}</span>
-        </div>
-
-        <DynamicTable {...tableData}/> */}
+        </div> */}
 
       </ThemeProvider>
     </QueryClientProvider>

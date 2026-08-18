@@ -16,6 +16,7 @@ export function Register() {
         username: z.string().min(1, "User Name is required"),
         email: z.email("Enter valid email").min(1, "Email is required"),
         password: z.string().min(1, "Password is required"),
+        confirmPassword: z.string().min(1, "Confirm Passwrod is required"),
         isOrganization: z.boolean().optional(),
         organizationName: z.string().optional()
     })
@@ -25,6 +26,12 @@ export function Register() {
         message: "Organization name is required",
         path: ["organizationName"]
        }  
+    ).refine(
+        (data) => data.password == data.confirmPassword,
+        {
+            message: "Password do not match",
+            path: ["confirmPassword"]
+        }
     )
 
     type FormFields = z.infer<typeof schema>;
@@ -34,6 +41,7 @@ export function Register() {
             username: '',
             email: '',
             password: '',
+            confirmPassword: '',
             isOrganization: false,
             organizationName: ''
         },
@@ -61,6 +69,7 @@ export function Register() {
                 <TextField {...register("username")} error={!!errors.username} helperText={errors.username?.message} id="outlined-basic" label="Username" variant="outlined" size="small" sx={{width: '90%'}} />
                 <TextField {...register("email")} error={!!errors.email} helperText={errors.email?.message} id="outlined-basic" label="Email" variant="outlined" size="small" sx={{width: '90%'}}/>
                 <TextField {...register("password")} error={!!errors.password} helperText={errors.password?.message} id="outlined-basic" label="Password" variant="outlined" size="small" sx={{width: '90%'}}/>
+                <TextField {...register("confirmPassword")} error={!!errors.confirmPassword} helperText={errors.confirmPassword?.message} id="outlined-basic" label="Confirm Password" variant="outlined" size="small" sx={{width: '90%'}}/>
                 <Box sx={{width: '90%', textAlign: 'start'}}>
                     <FormControlLabel control={<Checkbox defaultChecked={false} {...register("isOrganization")} />} label="Is Organization" />
                 </Box>
